@@ -1,0 +1,34 @@
+/* C++ Program to find LCA of u and v by reducing the problem to RMQ */
+#include<bits/stdc++.h>
+#define V 9               // number of nodes in input tree
+ 
+int euler[2*V - 1];       // For Euler tour sequence
+int level[2*V - 1];       // Level of nodes in tour sequence
+int firstOccurrence[V+1]; // First occurences of nodes in tour
+int ind;                  // Variable to fill-in euler and level arrays
+ 
+// A Binary Tree node
+struct Node
+{
+    int key;
+    struct Node *left, *right;
+};
+
+int main()
+{
+    // Let us create the Binary Tree as shown in the diagram.
+    Node * root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    root->right->left = newNode(6);
+    root->right->right = newNode(7);
+    root->left->right->left = newNode(8);
+    root->left->right->right = newNode(9);
+ 
+    int u = 4, v = 9;
+    printf("The LCA of node %d and node %d is node %d.\n", 
+            u, v, findLCA(root, u, v));
+    return 0;
+}
